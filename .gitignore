@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python/
+
+# PyTorch / numpy caches
+*.pth
+*.pt
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project-specific
+screenshots/
+*.mp3
+*.wav
+
+# Font file (too large)
+# dinglieciweifont20250217-2.ttf  # 7MB, consider git-lfs
