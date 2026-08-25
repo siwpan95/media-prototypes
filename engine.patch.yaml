@@ -1,0 +1,12 @@
+engine: alloy
+inline_records:
+  - dir: core/
+    from: alloy/media/ca/
+    date: "2026-08-25"
+    note: J2 S3 CA 规则引擎并入 alloy.media.ca 后，cellular_automaton/core（automaton.py）为内联副本；应用层（rendering/ui/audio/main）留在本仓。
+    import_prefix: rules
+  - dir: rules/
+    from: alloy/media/ca/rules/
+    date: "2026-08-25"
+    note: J2 S3 同上：rules/（8 JSON 规则族 + 5 实现模块）为 alloy.media.ca.rules 的内联副本。
+    import_prefix: rules
