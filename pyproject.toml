@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wave4"
+version = "0.2.0"
+description = "布朗噪声 / 分数阶布朗运动生成器（Davies-Harte, Hosking, 频域/IIR/分数阶滤波）与质量分析工具"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "wave4 contributors" }]
+keywords = ["brownian", "fractional-brownian-motion", "hurst", "noise", "davies-harte", "fgn", "fbm"]
+dependencies = [
+    "numpy>=1.26",
+    "matplotlib>=3.7",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7.0"]
+
+[project.urls]
+Homepage = "https://example.com/wave4"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["wave4*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+# ---------------------------------------------------------------------------
+# 静态检查：ruff（lint + format）
+# ---------------------------------------------------------------------------
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-exclude = ["wave4_legacy.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501"]  # 行长交由 formatter 统一处理
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B008"]  # 测试中允许默认参数调用
+
+# ---------------------------------------------------------------------------
+# 类型检查：mypy
+# ---------------------------------------------------------------------------
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+warn_unused_ignores = true
+check_untyped_defs = false
+
+[[tool.mypy.overrides]]
+module = "wave4_legacy"
+ignore_errors = true
