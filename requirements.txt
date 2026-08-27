@@ -1,0 +1,6 @@
+# ddd2 dependencies (auto-generated 2026-08-20)
+moviepy
+numba
+numpy
+Pillow
+scipy
