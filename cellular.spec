@@ -1,12 +1,12 @@
 # -*- mode: python ; coding: utf-8 -*-
-# cellular_automaton 安装包样板 spec（2026-08-25，pywallpaper 样板同款）
+# cellular_automaton 安装包样板 spec（2026-08-25，pywallpaper 样板同款；2026-08-27 目录重构更新路径）
 a = Analysis(
-    ['G:/media/cellular_automaton/main.py'],
-    pathex=['G:/media/cellular_automaton'],
+    ['G:/repos/cellular_automaton/main.py'],
+    pathex=['G:/repos/cellular_automaton'],
     binaries=[],
     datas=[
-        ('G:/media/cellular_automaton/rules', 'rules'),
-        ('G:/media/cellular_automaton/dinglieciweifont20250217-2.ttf', '.'),
+        ('G:/repos/cellular_automaton/rules', 'rules'),
+        ('G:/repos/cellular_automaton/dinglieciweifont20250217-2.ttf', '.'),
     ],
     hiddenimports=[],
     hookspath=[],
