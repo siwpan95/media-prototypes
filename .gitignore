@@ -1,7 +1,10 @@
-build/
+﻿build/
 dist/
 __pycache__/
 *.pyc
 .mypy_cache/
 fat.log
 *.spec.bak
+
+# 未跟踪产物/输出治理（2026-08-28）
+installer/
