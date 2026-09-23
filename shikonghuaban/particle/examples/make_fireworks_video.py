@@ -1,6 +1,6 @@
 """
 烟花秀视频生成器 v2.0
-基于 D:/allin/tools/particle 粒子系统
+基于本仓内置的 particle 粒子系统（<仓库根>/shikonghuaban/particle）
 
 v2.0 变化：
 - render_particles_to_layer 改用引擎的 LayeredPILRenderer（P6）
@@ -341,7 +341,7 @@ if __name__ == "__main__":
 
     print("=" * 60)
     print("  烟花秀视频生成器 v2.0")
-    print("  基于 D:/allin/tools/particle 粒子系统")
+    print("  基于本仓内置的 particle 粒子系统")
     print("=" * 60)
 
     assert os.path.exists(AUDIO_PATH), f"音效文件不存在: {AUDIO_PATH}"
