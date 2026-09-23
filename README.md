@@ -1,5 +1,7 @@
 # Cellular Automaton Wallpaper
 
+> 仓库：<https://gitee.com/siwpan/cellular_automaton> ｜ 许可：MIT（见 [LICENSE](LICENSE)）
+
 一个功能丰富的 2D 元胞自动机桌面壁纸程序，基于 **pygame + numpy** 实现，包含 **142 条规则**（涵盖 4 大类）、7 种颜色主题、11 种预定义图案，支持连续状态 CA、反应-扩散系统、辉光后处理与自动轮换壁纸模式。
 
 ![License](https://img.shields.io/badge/license-MIT-blue)
