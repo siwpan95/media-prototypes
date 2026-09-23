@@ -1,6 +1,6 @@
 ---
 name: cellular-automaton-wallpaper
-description: Maintain the cellular_automaton wallpaper (G:/media/cellular_automaton). pygame+numpy CA with 142 rules and wallpaper mode.
+description: Maintain the cellular_automaton wallpaper (本 SKILL.md 所在仓库根). pygame+numpy CA with 142 rules and wallpaper mode.
 agent_created: true
 ---
 
