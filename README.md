@@ -1,5 +1,7 @@
 # 时空画板 (Space-Time Canvas)
 
+> 仓库：<https://gitee.com/siwpan/shikonghuaban> ｜ 许可：MIT（见 [LICENSE](LICENSE)）
+
 全屏音频可视化引擎：以黑洞 / Penrose 几何为主题，用 `pygame` 渲染吸积盘、引力透镜、霍金辐射与 Penrose 结构路径粒子，并通过 `sounddevice` 实时合成锯齿波音符。
 
 > 项目正式名称以 **时空画板 / shikonghuaban** 为准；各模块 docstring 已统一品牌命名为「时空画板」（见 `docs/audit/architecture-audit.md` 第 12 项；治理结论见 `docs/audit/remediation-report.md`）。
