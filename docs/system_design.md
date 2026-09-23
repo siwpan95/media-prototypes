@@ -38,10 +38,10 @@
 
 ## 2. 文件列表及相对路径
 
-基于 `G:/wave4` 根目录：
+基于仓库根目录：
 
 ```
-G:/wave4/
+<仓库根>/
 ├── pyproject.toml                  # 构建/元数据/依赖（含 [test] extra）
 ├── requirements.txt                # 固定版本运行时依赖
 ├── README.md                       # 项目概览、安装、快速上手
