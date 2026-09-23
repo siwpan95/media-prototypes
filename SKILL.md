@@ -1,6 +1,6 @@
 ---
 name: shikonghuaban
-description: Maintain shikonghuaban space-time canvas (G:/media/shikonghuaban). pygame audio-visual engine with black hole/Penrose theme.
+description: Maintain shikonghuaban space-time canvas (本 SKILL.md 所在仓库根). pygame audio-visual engine with black hole/Penrose theme.
 agent_created: true
 ---
 

@@ -91,7 +91,7 @@ attractor = ForceField(field_type='attraction', x=400, y=300, strength=200.0)
 
 ```bash
 # 复制到 pywallpaper 项目（旧路径，pywallpaper 现已内置 particle.py 原语）
-cp -r particle/ D:/allin/right/pywallpaper/particle/
+cp -r particle/ <pywallpaper 仓根>/particle/
 ```
 
 ### 2. 微调适配
