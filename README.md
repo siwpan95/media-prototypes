@@ -1,5 +1,7 @@
 # photovideo
 
+> 仓库：<https://gitee.com/siwpan/photovideo> ｜ 许可：MIT（见 [LICENSE](LICENSE)）
+
 图片转视频生成器 —— 把多张图片合成视频的 Tkinter 工具，内置 6 种动效模式（网格拼贴、横/纵长图滚动、淡入淡出、KenBurns 推镜、逐张高亮）。
 
 ## 语言 / 类型
@@ -12,7 +14,7 @@
 - `output/`、`outputs/` —— 输出目录
 
 ## 运行方式与依赖
-- 运行：`F:\Python314\python.exe main.py`
+- 运行：`python main.py`
 - 依赖：`Pillow`、tkinter 标准库，以及系统 `ffmpeg`（需在 PATH 中，程序会自行探测）。无 requirements.txt。
 
 ## 测试状态
