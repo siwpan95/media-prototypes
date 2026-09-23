@@ -1,5 +1,7 @@
 # procedural_video
 
+> 仓库：<https://gitee.com/siwpan/procedural-video> ｜ 许可：MIT（见 [LICENSE](LICENSE)）
+
 kkrieger 风格的**过程生成视频生成器**，附带实时预览，几乎纯标准库实现（可整合多种视觉效果）。
 
 ## 语言 / 类型
