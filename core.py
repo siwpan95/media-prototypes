@@ -32,11 +32,19 @@ def even(x):
 
 
 def find_ffmpeg():
-    """在 PATH 和常见 Windows 目录探测 ffmpeg。"""
+    """探测 ffmpeg：环境变量 FFMPEG_BIN → PATH → 常见安装位置。
+
+    2026-09-23 去本地化：删除已失效的 C 盘 ffmpeg 固定候选
+    （该目录在本机不存在），改以 FFMPEG_BIN 覆盖 + shutil.which 兜底。
+    """
+    env = os.environ.get("FFMPEG_BIN", "").strip()
+    if env and (os.path.isfile(env) or shutil.which(env)):
+        return env
     p = shutil.which("ffmpeg")
     if p:
         return p
-    for c in (r"C:\ffmpeg\bin\ffmpeg.exe", r"C:\Program Files\ffmpeg\bin\ffmpeg.exe"):
+    for c in (r"C:\Program Files\ffmpeg\bin\ffmpeg.exe",
+              r"C:\Program Files (x86)\ffmpeg\bin\ffmpeg.exe"):
         if os.path.isfile(c):
             return c
     return None
