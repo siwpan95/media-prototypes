@@ -10,7 +10,7 @@
 - `ddd (2).spec` —— PyInstaller 打包配置
 
 ## 运行方式与依赖
-- 运行：`F:\Python314\python.exe "ddd (2).py"`
+- 运行：`python "ddd (2).py"`
 - 依赖：numpy、Pillow、moviepy、scipy（numba 可选，缺失时自动降级）
 
 ## 测试状态
