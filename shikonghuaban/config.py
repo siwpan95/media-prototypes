@@ -69,8 +69,14 @@ class Config:
 
     @classmethod
     def from_dict(cls, d: dict) -> "Config":
-        """只接受已知字段，忽略未知键，派生量交给 __post_init__ 重算。"""
-        known = {k: v for k, v in d.items() if k in cls.__dataclass_fields__}
+        """只接受已知字段，忽略未知键，派生量交给 __post_init__ 重算。
+
+        派生量字段（``init=False``，如 ``bl_photon_sphere_r``）一并忽略：
+        它们是 ``__post_init__`` 的输出，``to_dict()`` 会带上它们，若当作
+        构造参数传入会 TypeError，导致 ``from_dict(to_dict())`` 无法往返。
+        """
+        init_fields = {k for k, f in cls.__dataclass_fields__.items() if f.init}
+        known = {k: v for k, v in d.items() if k in init_fields}
         return cls(**known)
 
     @classmethod
