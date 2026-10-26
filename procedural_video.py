@@ -53,9 +53,9 @@ class AVIWriter:
         # avih 块
         f.write(b'avih')
         f.write(struct.pack('<I', 56))
-        f.write(struct.pack('<IIIIIIIIIII',
+        f.write(struct.pack('<IIIIIIIIIIIIII',
             1000000 // self.fps, 0, 0, 0x10, 0, 0, 1, 0,
-            self.w, self.h, 0))
+            self.w, self.h, 0, 0, 0, 0))   # 末 4 个 DWORD 为 dwReserved（AVIMAINHEADER = 56 字节）
         # strl 列表
         f.write(b'LIST')
         f.write(struct.pack('<I', 0)); strl_start = f.tell()
@@ -64,13 +64,13 @@ class AVIWriter:
         f.write(struct.pack('<I', 56))
         f.write(b'vids')
         f.write(b'DIB ')
-        f.write(struct.pack('<IHHIIII', 0,0,0,0, 1, self.fps, 0))
-        f.write(struct.pack('<I', self.frame_size))
+        f.write(struct.pack('<IHHIIIII', 0,0,0,0, 1, self.fps, 0, 0))  # dwFlags…dwStart, dwLength
+        f.write(struct.pack('<I', self.frame_size))                     # dwSuggestedBufferSize
         f.write(struct.pack('<i', -1)); f.write(struct.pack('<i', 0))
         f.write(struct.pack('<hhhh', 0,0,self.w,self.h))
         f.write(b'strf')
         f.write(struct.pack('<I', 40))
-        f.write(struct.pack('<IiiHHIIiiII', self.w, self.h,
+        f.write(struct.pack('<IiiHHIIiiII', 40, self.w, self.h,   # biSize 必填 40，缺了会少 4 字节
              1, 24,          # biPlanes 和 biBitCount
              0,              # biCompression
              self.frame_size,  # biSizeImage
@@ -97,8 +97,8 @@ class AVIWriter:
             dib += row
         self.f.write(b'00dc')
         self.f.write(struct.pack('<I', self.frame_size))
-        self.offsets.append(self.f.tell())
         self.f.write(bytes(dib))
+        self.offsets.append(self.f.tell())
 
     def close(self, total_frames):
         """完成写入，回填头部信息"""
