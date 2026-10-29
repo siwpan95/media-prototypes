@@ -1,0 +1,25 @@
+# 私有运行环境与构建产物
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# 历史发布包（gitee 已有 v1.0.0 发行版，zip 留本地）
+release/
+
+# ── 中间产物与原始素材（本地保留，不入库）────────────────────────────
+# v2（ling-cinema）
+ling-cinema/audio/
+ling-cinema/frames/
+ling-cinema/video_clips/
+ling-cinema/raw_video.mp4
+ling-cinema/full_audio.mp3
+# v3（ling-cinema-v2）
+ling-cinema/ling-cinema-v2/ai_images/
+ling-cinema/ling-cinema-v2/audio_wav/
+ling-cinema/ling-cinema-v2/bgm/
+ling-cinema/ling-cinema-v2/public_domain/
+ling-cinema/ling-cinema-v2/seg_png/
+ling-cinema/ling-cinema-v2/seg_vid/
+ling-cinema/ling-cinema-v2/raw_video.mp4
+ling-cinema/ling-cinema-v2/full_audio.mp3
