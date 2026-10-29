@@ -1,0 +1,23 @@
+"""常量配置"""
+# 窗口尺寸
+WIDTH, HEIGHT = 720, 520
+CELL_SIZE = 2
+GRID_W = 200
+GRID_H = 200
+PANEL_WIDTH = 200
+PREVIEW_W = WIDTH - PANEL_WIDTH
+FPS = 60
+
+# 颜色主题
+BG_DARK = (30, 30, 40)
+PANEL_BG = (45, 45, 60)
+ACCENT_COLOR = (80, 140, 200)
+TEXT_COLOR = (220, 220, 230)
+
+# 反应扩散参数
+Du = 0.16
+Dv = 0.08
+F = 0.035
+k = 0.065
+dt = 0.5
+dx = CELL_SIZE
