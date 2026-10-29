@@ -1,0 +1,30 @@
+[project]
+name = "shikonghuaban"
+version = "0.1.0"
+description = "时空画板 / Space-Time Canvas — pygame + sounddevice physics visualization engine"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy",
+    "pygame",
+    "sounddevice",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+# Declare pytest as the test runner and where the tests live.
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+python_files = ["test_*.py"]
+
+# ── 打包 / 安装元数据 ──
+# 源码已收为 shikonghuaban/ 标准包，支持 `pip install -e .` 与
+# `python -m shikonghuaban` 从仓库根目录运行。
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["shikonghuaban*"]

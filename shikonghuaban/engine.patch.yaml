@@ -1,0 +1,8 @@
+engine: alloy
+inline_records:
+  - dir: shikonghuaban/particle/
+    from: notpython/particle（siwpan/particle 仓）
+    date: "2026-08-25"
+    note: J2 S4 内联纪律收敛：particle/ 为粒子库内联子集（core/particle.py + core/particle_numpy.py + components/effects.py）。canonical=notpython/particle 全量库（含 numba/taichi 后端）；本仓为"复制优于共享"的精选副本，更新用 alloy sync --subset 或手工比对。
+    import_prefix: ""
+  - note: 本仓 audio_engine/visual_engine 为应用层主题引擎（黑洞/Penrose），非通用引擎内核，按 S0 决定不并入 alloy（特定主题应用）。
