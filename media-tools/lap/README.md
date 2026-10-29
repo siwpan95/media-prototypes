@@ -6,4 +6,4 @@
 
 - 入口：`main.pyw`（顶层）与 `project1\main.py`
 - 详细说明见：`project1\README.md`
-- 运行：`F:\Python314\pythonw.exe main.pyw`（注意 F:\Python314 为嵌入式发行版，需先进入本目录或修正 sys.path）
+- 运行：`/Python314/pythonw.exe main.pyw`（注意 /Python314 为嵌入式发行版，需先进入本目录或修正 sys.path）
