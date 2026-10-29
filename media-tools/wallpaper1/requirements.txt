@@ -1,0 +1,4 @@
+# wallpaper1 dependencies (auto-generated 2026-08-20)
+keyboard
+Pillow
+pystray
