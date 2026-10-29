@@ -1,0 +1,3 @@
+# gan dependencies (auto-generated 2026-08-20)
+numpy
+opencv-python
