@@ -1,0 +1,35 @@
+# Python / build artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.eggs/
+build/
+dist/
+.eggs/
+
+# Test / cache
+.pytest_cache/
+.cache/
+.coverage
+htmlcov/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated artifacts
+*.npy
+*.npz
+*.csv
+figs/
+
+# Debug / scratch files (防止调试产物再次入库)
+_*.txt
+_*.py
+_dbg*
+_diag*
+_verify*
+_v.txt
+_verr.txt

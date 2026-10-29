@@ -1,0 +1,4 @@
+# wave4 dependencies (auto-generated 2026-08-20)
+matplotlib
+numpy
+pytest

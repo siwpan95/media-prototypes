@@ -1,0 +1,62 @@
+classDiagram
+    class BrownianNoiseGenerator {
+        薄分发器（持有 rng + 处理 per-call seed）
+        +str method
+        +RandomState rng
+        +__init__(method: str = 'basic')
+        +set_seed(seed: int) void
+        +generate(N, fs=1.0, intensity=1.0, **kwargs) ndarray
+        -_resolve_beta_h(kwargs) float
+    }
+
+    class Generators {
+        <<module: wave4.core.generators>>
+        纯函数（rng 由调用方注入，函数内不自建随机源）
+        +gen_basic(rng, N, intensity=1.0) ndarray
+        +gen_freq(rng, N, fs=1.0, intensity=1.0, f_min=None, f_max=None) ndarray
+        +gen_iir(rng, N, intensity=1.0, alpha=0.99) ndarray
+        +gen_fractal(rng, N, fs=1.0, intensity=1.0, beta=2.0) ndarray
+        +gen_davies_harte(rng, N, H=0.5, fs=1.0, intensity=1.0, raw=False) ndarray
+        +gen_hosking(rng, N, H=0.5, fs=1.0, intensity=1.0, raw=False) ndarray
+    }
+
+    class Utils {
+        <<module: wave4.core._utils>>
+        +normalize(x, intensity=1.0) ndarray
+        +fgng_acov(H, n) ndarray
+    }
+
+    class Analysis {
+        <<module: wave4.analysis.metrics>>
+        +autocorr(x, max_lag) ndarray
+        +estimate_psd(x, fs=1.0, **welch) tuple
+        +estimate_h_from_psd(x, fs=1.0, fmin=None, fmax=None) float
+        +hurst_rs(x, n_scales=None) float
+        +hurst_dfa(x, order=1, n_scales=None) float
+        +variance_scaling_exponent(x, step_range=None) float
+    }
+
+    class Viz {
+        <<module: wave4.viz.plot>>
+        +plot_noise(x, title=None, fs=1.0, n_show=None, ax=None) Axes
+        +plot_comparison(series: dict, fs=1.0, n_show=None) Figure
+        +plot_psd(x, fs=1.0, title=None) Figure
+    }
+
+    class IO {
+        <<module: wave4.io.serialize>>
+        +save_noise(x, path, fmt='npz', metadata=None) void
+        +load_noise(path) tuple
+    }
+
+    class Config {
+        <<module: wave4._config>>
+        +configure_chinese_font() void
+        +__version__: str
+    }
+
+    BrownianNoiseGenerator ..> Generators : generate() 分派调用 gen_*
+    BrownianNoiseGenerator ..> Utils : （间接，经 gen_*）
+    Generators ..> Utils : normalize / fgng_acov
+    Viz ..> Config : configure_chinese_font()
+    Viz ..> Analysis : estimate_psd

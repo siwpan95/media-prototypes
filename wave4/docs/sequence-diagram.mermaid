@@ -1,0 +1,51 @@
+sequenceDiagram
+    actor User
+    participant G as BrownianNoiseGenerator
+    participant R as np.random.RandomState
+    participant F as generators.gen_*
+    participant U as _utils.normalize
+    participant A as analysis.metrics
+    participant V as viz.plot
+    participant C as _config
+
+    Note over User,G: ① 原始 4 法生成（保留数值行为与 seeding）
+    User->>G: generate(N, fs, intensity, seed=42, **kw)
+    alt 提供 per-call seed
+        G->>R: rng.seed(42)   %% 复现关键：reseed 实例 rng
+    end
+    G->>F: gen_*(rng, N, ...)
+    F->>R: rng.randn(N)
+    F->>U: normalize(x, intensity)
+    U-->>F: 零均值 / 标准差≈intensity
+    F-->>G: ndarray(N,)
+    G-->>User: 噪声数组
+
+    Note over User,F: ② Davies–Harte / Wood–Chan fBm 生成
+    User->>F: gen_davies_harte(rng, N, H=0.7)
+    F->>F: γ(k)=0.5[(k+1)^2H−2k^2H+(k−1)^2H]
+    F->>F: 构造 2N 循环矩阵首行 r
+    F->>F: λ = Re(FFT(r))
+    alt 存在 λ < 0
+        F->>F: Wood–Chan Bartlett 窗修正
+        alt 修正后仍为负 (H>0.95 长序列)
+            F-->>User: raise ValueError
+        end
+    end
+    F->>R: rng.randn(2N) ×2
+    F->>F: W=√λ·Z → fGn=Re(IFFT(W))[:N]
+    F->>F: fBm = cumsum(fGn)
+    F->>U: normalize(fBm, intensity)
+    F-->>User: ndarray(N,)
+
+    Note over User,A: ③ 质量指标分析
+    User->>A: hurst_dfa(x) / estimate_h_from_psd(x)
+    A-->>User: H 估计值
+
+    Note over User,V: ④ 可视化（中文字体）
+    User->>V: plot_comparison({name: x})
+    V->>C: configure_chinese_font()
+    V-->>User: Figure
+
+    Note over User,IO: ⑤ 序列化（可选）
+    User->>IO: save_noise(x, path, fmt)
+    IO-->>User: 落盘 .npy/.npz/.csv
