@@ -1,0 +1,12 @@
+
+# allin-repocheck-r6-fix (2026-11-15)
+asteval
+edge-tts
+imageio
+keyboard
+moviepy
+numba
+pygame-ce
+pygame-gui
+pystray
+sounddevice
