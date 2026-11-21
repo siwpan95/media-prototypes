@@ -7,7 +7,7 @@ import os
 import struct
 import wave
 
-OUT_DIR = "D:/allin/lap/project1/assets/sfx_joke"
+OUT_DIR = "<仓库根>/lap/project1/assets/sfx_joke"  # 去符盘：原路径已替换为 <仓库根>（盘符随机器）
 SR = 22050  # 采样率（较低以减小文件）
 
 os.makedirs(f"{OUT_DIR}/fan", exist_ok=True)

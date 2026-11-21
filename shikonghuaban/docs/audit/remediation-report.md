@@ -87,7 +87,7 @@ A/B/C/D 修复清单：
 
 **G 项关键澄清**：`test_system_numpy_matches_scalar_fallback` 此前看似「浮点累积误差不收敛」，根因实为**测试缺陷**——两套系统各自 `create_turbulence()` 生成了**不同随机种子**的湍流场（`ForceField.__init__` 内 `_noise_time_offset = random.uniform(0,1000)`），并非实现差异。修复为两系统**共享同一组力场对象**（深拷贝），双路径在 double 精度下严格一致（`atol=1e-9`），证明向量化与标量力学完全等价。
 
-**H 项收尾**：清除 `particle/` 下 9 个外围文件残留的 `sys.path.insert`（含 `make_fireworks_video.py` 的硬编码 `PARTICLE_ROOT="D:/allin/tools/particle"`）：
+**H 项收尾**：清除 `particle/` 下 9 个外围文件残留的 `sys.path.insert`（含 `make_fireworks_video.py` 的硬编码 `PARTICLE_ROOT="<仓库根>/tools/particle"`）：  # 去符盘：原路径已替换为 <仓库根>（盘符随机器）
 `components/effects.py`、`systems/{combat_effects,fireworks_system,weather_system}.py`、`examples/{demo_v3_all_features,demo_enhanced_features,fireworks,make_fireworks_video,test_fireworks_headless}.py`。全仓仅剩 `tests/conftest.py`（注入 REPO_ROOT 供测试发现包，属合理做法）与 `archive/fat.py`（已退役）。
 
 **I 项源码收包重组**（用户要求重新整理）：新建 `shikonghuaban/` 标准包，将 12 个应用模块与 `particle/` 子包整体移入；模块间互导由顶层 `from config import` 改写为包内相对导入 `from .config import`；新增 `shikonghuaban/__main__.py` 作为 `python -m shikonghuaban` 入口；同步更新 `fat.spec`、`pyproject.toml`、`tests/conftest.py` 与根文档的运行说明。
