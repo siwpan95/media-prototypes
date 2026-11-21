@@ -90,7 +90,7 @@
 ## 4. 遗留事项（不影响归档判断，但建议后续处理）
 
 1. **48_鼠标跟随（MouseFollowerEffect）**：未迁移。壁纸引擎无鼠标交互，属有意取舍；若需保留，pywallpaper 需新增 mouse 事件源，不建议。
-2. ~~dev 工具旧路径 <仓库根>~~ **已修复（2026-08-21）**：tools/batch_generate_effects.py、tools/effect_editor.py、tools/effect_editor_v2.py、tools/video_generator.py、tests/test_ca_jit.py 的路径常量已全部改为仓库相对路径。  # 去符盘：原路径已替换为 <仓库根>（盘符随机器）
+2. ~~dev 工具旧路径 D:\allin~~ **已修复（2026-08-21）**：tools/batch_generate_effects.py、tools/effect_editor.py、tools/effect_editor_v2.py、tools/video_generator.py、tests/test_ca_jit.py 的路径常量已全部改为仓库相对路径。
 3. numba 未安装：CA 演化自动回退 AST 模式（慢），requirements.txt 列为“强烈推荐”，本机可 pip install numba。
 4. pywallpaper/test_engine.py 在 GBK 控制台因 ✓ 字符报错——可用 PYTHONIOENCODING=utf-8 运行更稳。
 5. media_engine/media.py（tkinter GUI）内部 EFFECTS_DIR 仍为旧绝对路径——该 GUI 已被 pywallpaper 取代，归档时无需修。
@@ -118,7 +118,7 @@
 2. **规则名单内置**：draw/templates/evolution.py 复制为 \`pywallpaper/recipes/evolution_rules.py\`（71 条规则名），CA 配方索引的 by_rule 不再依赖 draw。
 3. **超级参数内置**：draw/templates/super_params.py 复制为 \`pywallpaper/recipes/super_params.py\`，并在 ca.py 内置 33 项默认值 + \`_resolve_super_params()\`（init/rule/color 三个编译入口统一调用，等价 draw 的 resolve_super_params）。
 4. **路径自包含**：ca.py 的候选目录改为「pywallpaper/recipes（首选，相对包路径）→ 旧 draw/effects（过渡兼容）」，实测 DRAW_EFFECTS_DIR 解析为 \`G:\media\pywallpaper\recipes\\\`。
-5. **dev 工具路径修复**：tools/batch_generate_effects.py、tools/effect_editor.py、tools/effect_editor_v2.py、tests/test_ca_jit.py 的硬编码 <仓库根> 路径全部改为仓库相对路径。  # 去符盘：原路径已替换为 <仓库根>（盘符随机器）
+5. **dev 工具路径修复**：tools/batch_generate_effects.py、tools/effect_editor.py、tools/effect_editor_v2.py、tests/test_ca_jit.py 的硬编码 D:\allin 路径全部改为仓库相对路径。
 
 ### 7.2 公式引擎为全量配方扩展的能力（本轮新增）
 
